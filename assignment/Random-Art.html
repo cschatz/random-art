@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Art - Assignment Specification</title>
+    <style type="text/css">
+        body {
+            margin:  auto;
+            width:  80%;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <p><strong>Random Art</strong></p>
+</center>
+<p><strong>Introduction</strong></p>
+<p>[Concept and partial content credit: Christopher A. Stone, Harvey Mudd College.]</p>
+<p style="text-align: left;">Suppose we take an expression in x and y, built by nesting a combination of these 4 functions:</p>
+<p style="text-align: left;"><img class="equation_image" title="f_1\left(a\right)=\sin\left(pi\cdot a\right)" src="https://mills.instructure.com/equation_images/f_1%255Cleft(a%255Cright)%253D%255Csin%255Cleft(pi%255Ccdot%2520a%255Cright)" alt="LaTeX: f_1\left(a\right)=\sin\left(pi\cdot a\right)" data-equation-content="f_1\left(a\right)=\sin\left(pi\cdot a\right)" /><br /><img class="equation_image" title="f_2\left(a\right)=\cos\left(pi\cdot a\right)" src="https://mills.instructure.com/equation_images/f_2%255Cleft(a%255Cright)%253D%255Ccos%255Cleft(pi%255Ccdot%2520a%255Cright)" alt="LaTeX: f_2\left(a\right)=\cos\left(pi\cdot a\right)" data-equation-content="f_2\left(a\right)=\cos\left(pi\cdot a\right)" /><br /><img class="equation_image" title="f_3\left(a,\:b\right)=a\cdot b" src="https://mills.instructure.com/equation_images/f_3%255Cleft(a%252C%255C%253Ab%255Cright)%253Da%255Ccdot%2520b" alt="LaTeX: f_3\left(a,\:b\right)=a\cdot b" data-equation-content="f_3\left(a,\:b\right)=a\cdot b" /><br /><img class="equation_image" title="f_4\left(a,\:b\right)=\frac{\left(a\:+\:b\right)}{2}" src="https://mills.instructure.com/equation_images/f_4%255Cleft(a%252C%255C%253Ab%255Cright)%253D%255Cfrac%257B%255Cleft(a%255C%253A%252B%255C%253Ab%255Cright)%257D%257B2%257D" alt="LaTeX: f_4\left(a,\:b\right)=\frac{\left(a\:+\:b\right)}{2}" data-equation-content="f_4\left(a,\:b\right)=\frac{\left(a\:+\:b\right)}{2}" /><br /><br />If we apply the resulting expression to variables <em>x </em>and y, restricting their ranges to between -1 and +1, any expression built with these will also have a value that always lives between -1 and +1. For instance:</p>
+<p style="text-align: left;"><img class="equation_image" title="f_4\left(x,\:f_3\left(f_1\left(y\right),f_2\left(x\right)\right)\right)\:=\frac{\left(x\:+\sin\left(pi\cdot y\right)\cdot\cos\left(pi\cdot x\right)\right)}{2}" src="https://mills.instructure.com/equation_images/f_4%255Cleft(x%252C%255C%253Af_3%255Cleft(f_1%255Cleft(y%255Cright)%252Cf_2%255Cleft(x%255Cright)%255Cright)%255Cright)%255C%253A%253D%255Cfrac%257B%255Cleft(x%255C%253A%252B%255Csin%255Cleft(pi%255Ccdot%2520y%255Cright)%255Ccdot%255Ccos%255Cleft(pi%255Ccdot%2520x%255Cright)%255Cright)%257D%257B2%257D" alt="LaTeX: f_4\left(x,\:f_3\left(f_1\left(y\right),f_2\left(x\right)\right)\right)\:=\frac{\left(x\:+\sin\left(pi\cdot y\right)\cdot\cos\left(pi\cdot x\right)\right)}{2}" data-equation-content="f_4\left(x,\:f_3\left(f_1\left(y\right),f_2\left(x\right)\right)\right)\:=\frac{\left(x\:+\sin\left(pi\cdot y\right)\cdot\cos\left(pi\cdot x\right)\right)}{2}" /></p>
+<p style="text-align: left;">See if you can convince yourself the expression on the right always has a value between -1 and +1 as long as x and y are both between -1 and +1.</p>
+<p style="text-align: left;">Now, suppose x and y represent coordinates in a 2-by-2-square:</p>
+<ul>
+    <li style="text-align: left;">(-1, -1) is the upper-left corner</li>
+    <li style="text-align: left;">(0, 0) is the exact center</li>
+    <li style="text-align: left;">(1, 1) is the lower right corner</li>
+</ul>
+<p>We can use the value of an expression as a color value for each point by considering -1 to represent &rdquo;no color&rdquo; and +1 to represent &rdquo;maximum color&rdquo;. In computer graphics terms, color values range from 0 to 255, so -1 maps on to 0 and 255 maps on to +1.</p>
+<p><span>Most sufficiently complicated expressions have a good chance of giving &rdquo;interesting&rdquo; visual output. We can generate deeply-nested expressions (8-10 levels of nesting seems to work well) completely randomly, see how they look, and keep the good ones. </span></p>
+<p><span>The central task in this project is to randomly generate expressions using the four primitives. You will do this in the same way as the random sentences we created in class. using the concept of a </span><span>transformation grammar</span><span>. The </span><span>starting symbol </span><span>is E (standing for &ldquo;expression&rdquo;), and the available transformations are: </span></p>
+<p><span>E -&gt; E * E</span></p>
+<p><span>E -&gt; (E + E) / 2</span></p>
+<p><span>E -&gt; sin(pi * E)</span></p>
+<p><span>E -&gt; cos(pi * E)</span></p>
+<p><span>E -&gt; x</span></p>
+<p><span>E -&gt; y</span></p>
+<p><span>If you do this </span><strong>recursivel</strong><span><strong>y</strong>, as long as every E eventually transforms into either </span><span>x </span><span>or </span><span>y</span><span>, you will end up with a nested expression of the kind you need.&nbsp; To decide whether to use the last two productions, the recursive function you create needs to have a depth argument, and it should only use those last two productions when depth=1, otherwise picking one of the other productions at random and recursively calling itself with (depth-1).</span><em></em></p>
+<p style="text-align: left;"><strong>Program Specification&nbsp;</strong></p>
+<p style="text-align: left;">When the program starts, it should create a large, square graphics window. I recommend you work initially with a 300x300 window, but the final program should use a window of size at least 800x800.</p>
+<p style="text-align: left;">The main interface gives the user these options:</p>
+<ul>
+    <li>Set the minimum and maximum recursion depth.</li>
+    <li>Enter an expression themselves, causing it to be rendered as a greyscale image.<br />The value of the expression for each x,y value will indicate the brightness of the corresponding pixel, with -1 as pure black (0 for all 3 colors) and +1 as pure white (255 for all 3 colors).</li>
+    <li>Generate&nbsp;a random greyscale image.<br />In this case, the program needs to generate just one random expression and apply it to set all three (red, green, blue) color values.</li>
+    <li>Generate&nbsp;for a random color image.<br />In this case, the program needs to generate three different random expressions, using one for each of the three color values.</li>
+    <li>Quit</li>
+</ul>
+<p><strong>Code Framework</strong></p>
+<p>The starter code for this project is here:</p>
+<p><a class="instructure_file_link inline_disabled" href="https://drive.google.com/file/d/1X3sU2fCC3tW2adIUzbShyG11sTtajqN9/view?usp=sharing" target="_blank" rel="noopener">RandomArt.zip</a></p>
+<p>(If you use Eclipse, make sure when you import you select "Existing Projects Into Workspace.")</p>
+<p>There are two classes already built for your use:</p>
+<ul>
+    <li>The <strong>Expression</strong> class represents a mathematical expression, and can be initialized with a string of the correct form. <br />The <strong>evaluate(double x, double y)</strong> method of an Expression object can be used to get the expression's value for a given pair of x,y values.</li>
+    <li>The <strong>Picture</strong> class represents a picture. It has a few methods you will need to call:
+        <ul>
+            <li><strong>set(int pixelX, int pixelY, int r, int g, int b)<br /></strong>This sets the pixel at a particular position to a specific color, specified by red(r), green(g) and blue(b) values between 0 and 255.</li>
+            <li><strong>show()</strong><br />This updates the picture the user sees. (You would typically call this <strong>after</strong> doing set(...) for all pixels in the image.)<br />If it hasn't been called previously, it also opens a new window to display the picture in.</li>
+        </ul>
+    </li>
+</ul>
+<p>The program as a whole lives in the <strong>RandomArtApp </strong>class, which already has a complete main(), along with a lot of other code "pre-written" for you. You should read through the entire file and note all of the tasks I have written in different places, marked with a "TO DO" comment.</p>
+<p><strong>Implementation</strong></p>
+<p>You should start your work on this project by using top-down design,&nbsp;thinking carefully about how to decompose the overall program. There are at least three aspects that are almost completely independent:&nbsp;The user interface; creating an expression; calculating and showing an image.</p>
+<p>There are two specifically tricky aspects of the assignment to be aware of:</p>
+<p><span style="font-size: 0.875rem;">(1) Getting the recursive generation of expression to work in a reasonable way. The program needs to keep track of a minimum and maximum recursion depth and make sure any expression generated is within those bounds. For instance, if the minimum depth is 1 and the maximum depth is 2, it might generate expressions like these:</span><br style="font-size: 0.875rem;"><span style="font-size: 0.875rem;"></span></p>
+<p style="text-align: center;"><em><span style="font-size: 0.875rem;">x<br>y<br>avg(x, x)<br>y∗x <br>sin(pi ∗ y)</span></em></p>
+<p style="text-align: left;"><span style="font-size: 0.875rem;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; but NOT these:</span></p>
+<p style="text-align: center;"><em><span style="font-size: 0.875rem;">avg(x, y ∗ x)<br>sin(pi ∗ cos(pi ∗ x))</span></em></p>
+<p style="text-align: left;">(2)&nbsp;Re-scaling values back and forth between the range [-1, 1] and the appropriate ranges for pixel positions and color values. Make sure you test everything carefully!</p>
+</body>
+</html>
