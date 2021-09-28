@@ -6,4 +6,4 @@ The assignment specification is in the **assignment** directory.
 
 Starter code exists in two languages/frameworks, in their respective directories: Java (using Swing and BufferedImage for graphical output) and C++ (using CImg for graphical output). In both cases, in addition to a miniature library for rendering images, there is an Expression class that implements an abstract syntax tree and and parsing for arithmetic expressions.
 
-If you want access to the full implementation/solution, please contact me. I am happy to share it with anyone who can give reasonable assurance they are an instructor or otherwise not helping someone cheat on an assignment.
+(If you want access to the full implementation/solution, please contact me. I am happy to share it with anyone who can give reasonable assurance they are an instructor or otherwise not helping someone cheat on an assignment.)
