@@ -5,7 +5,7 @@
     <style type="text/css">
         body {
             margin:  auto;
-            width:  80%;
+            width:  600px;
         }
     </style>
 </head>
@@ -64,9 +64,9 @@
 <p>You should start your work on this project by using top-down design,&nbsp;thinking carefully about how to decompose the overall program. There are at least three aspects that are almost completely independent:&nbsp;The user interface; creating an expression; calculating and showing an image.</p>
 <p>There are two specifically tricky aspects of the assignment to be aware of:</p>
 <p>(1) Getting the recursive generation of expression to work in a reasonable way. The program needs to keep track of a minimum and maximum recursion depth and make sure any expression generated is within those bounds. For instance, if the minimum depth is 1 and the maximum depth is 2, it might generate expressions like these:</span><br style="font-size: 0.875rem;"><span style="font-size: 0.875rem;"></span></p>
-<p style="text-align: center;"><em><span style="font-size: 0.875rem;">x<br>y<br>avg(x, x)<br>y∗x <br>sin(pi ∗ y)</span></em></p>
-<p style="text-align: left;"><span style="font-size: 0.875rem;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; but NOT these:</span></p>
-<p style="text-align: center;"><em><span style="font-size: 0.875rem;">avg(x, y ∗ x)<br>sin(pi ∗ cos(pi ∗ x))</span></em></p>
+<p style="text-align: center;"><em>x<br>y<br>avg(x, x)<br>y∗x <br>sin(pi ∗ y)</em></p>
+<p style="text-align: left;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; but NOT these:</p>
+<p style="text-align: center;"><em>avg(x, y ∗ x)<br>sin(pi ∗ cos(pi ∗ x))</em></p>
 <p style="text-align: left;">(2)&nbsp;Re-scaling values back and forth between the range [-1, 1] and the appropriate ranges for pixel positions and color values. Make sure you test everything carefully!</p>
 </body>
 </html>
